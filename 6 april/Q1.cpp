@@ -9,36 +9,40 @@ int main()
     cin>>T;
     while(T!=0)
     {
-        int n,k;
+        int n;
         cin>>n;
-        cin>>k;
-        map<char,int>m;
+        string s;
+        cin>>s;
+        int count1=0;
+        int id=0;
         for(int i=0;i<n;i++)
         {
-          char c;
-          m[c]++;
+               if(s[i]=='1')
+               {
+                count1++;
+                id=i;
+               }
         }
-        vector<int>v;
-        for(auto i:m)
+        if(count1==2)
         {
-          v.push_back(i.second);
+            if(s[id]!=s[id-1])
+            {
+                cout<<"YES"<<endl;
+            }
+            else
+            {
+                cout<<"NO"<<endl;
+            }
         }
-        sort(v.begin(),v.end());
-        bool t=true;
-        for(int i=0;i<v.size();i++)
+        else if(count1%2==0 && count1!=2)
         {
-          k-=v[i];
-          if(k<=0)
-          {
             cout<<"YES"<<endl;
-            t=!t;
-            break;
-          }
-        }
-        if(t)
+        } 
+        else
         {
-          cout<<"NO"<<endl;
+            cout<<"NO"<<endl;
         }
+
         T--;
     }
 return 0;
